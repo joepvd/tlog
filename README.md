@@ -1,4 +1,4 @@
-# tslog
+# tlog
 
 Prepends lines received on STDIN with a time stamp.
 
@@ -10,8 +10,8 @@ From source:
 ```sh
 $ go get jehiah/go-strftime"
 $ go get ogier/pflag"
-$ go build tslog.go
-$ cp tslog /path/
+$ go build tlog.go
+$ cp tlog /path/
 ```
 
 
@@ -37,7 +37,7 @@ long_running_command | tlog
 Default is to log time in the current time zone in microseconds in the following
 format: `%Y-%m-%dT%H:%M:%S%L`
 
-`tlog` is intended to be used in shell scripts and on CI serfvers where timing
+`tlog` is intended to be used in shell scripts and on CI servers where timing
 information is usually omitted. Including this will prepend stdout and stderr from
 your script with a time stamp:
 

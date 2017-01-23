@@ -6,8 +6,8 @@ go:
 install:
     - go get github.com/jehiah/go-strftime
     - go get github.com/ogier/pflag
-    - go build tslog.go
+    - go build tlog.go
 script:
-    "{echo first line; sleep .5; echo second line; } | ./tslog"
+    "{echo first line; sleep .5; echo second line; } | ./tlog"
 notifications:
     email: false
