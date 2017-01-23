@@ -1,0 +1,13 @@
+sudo: false
+dist: trusty
+language: go
+go:
+    - 1.7.x
+install:
+    - go get github.com/jehiah/go-strftime
+    - go get github.com/ogier/pflag
+    - go build tslog.go
+script:
+    "{echo first line; sleep .5; echo second line; } | ./tslog"
+notifications:
+    email: false
