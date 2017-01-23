@@ -8,6 +8,6 @@ install:
     - go get github.com/ogier/pflag
     - go build tlog.go
 script:
-    "{echo first line; sleep .5; echo second line; } | ./tlog"
+    "{ echo first line; sleep .5; echo second line; } | ./tlog"
 notifications:
     email: false
