@@ -2,12 +2,19 @@ sudo: false
 dist: trusty
 language: go
 go:
-    - 1.7.x
+- 1.7.x
 install:
-    - go get github.com/jehiah/go-strftime
-    - go get github.com/ogier/pflag
-    - go build tlog.go
-script:
-    "{ echo first line; sleep .5; echo second line; } | ./tlog"
+- go get github.com/jehiah/go-strftime
+- go get github.com/ogier/pflag
+- go build tlog.go
+script: "{ echo first line; sleep .5; echo second line; } | ./tlog"
+deploy:
+    provider: releases
+    api_key:
+        secure: Wdx1tNexYaOTj4180vz5kW3T3ZfrUfuwRrymo+G7lMyeh2NyHXAuCqRodNMAK9uyVXCwa2sppQHrcIVGX8wyoJHgf0z7Jsg2O7ajTLJ46T2nHCXmBLmgVzzR3tyqDWJ48AF+9Kq4CVh2XjvNuGS2tnA/uEzpAaZl4NkFsbwryMSDcUlc1+817hVkJHE53qTHgix6WcEXtBPXryeoKflXm7iYnC0vFkScsRjVHOQ14I94MnboDdQbL59qm6OrD+7yr8EuR4bBFr9feKB3XNpUep3U8Sv72fOxe4UzaE0k/OuliLM3B3vWOJNqRbEjVVShWG1P4YslY1kxDQVy+aDjCwcdOO/4Yvb0SrH1D3hIAzJ36WtTF1gEdkDyKSmKZFoouvCVuY7/Ex5nyyttuYP9POJBZHcc4QDFmhgvNduFxQpAOlhYaAwxCiaeXiLA7P4d5aoVJj/pJm7iphTY+Bgood+iNRDTQWTeEBPbnppScQNK42FAhBwukLhUrzS83HogvBlGQ+WJbrEvofWy3b202SrAymiN2DHcanoo1MMuEhx11xN4QgtqBSCiSPkAwzrIj6RnwTrhcEOyK9upTxGM/dZbW2IVi7ph6ZO13yFDHN20nbvWO/M+is/8158VgLYRa8GNn0OYxZU6b52RCHN1iwLac3xA363ymB5AiP6p6u8=
+    file: tlog
+    skip_cleanup: true
+    on:
+        tags: true
 notifications:
     email: false
