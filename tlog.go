@@ -40,7 +40,7 @@ func main() {
 	for scanner.Scan() {
 		text := scanner.Text()
 		if err := scanner.Err(); err != nil {
-			fmt.Println(os.Stderr, "reading stdin:", err)
+			fmt.Fprintln(os.Stderr, "reading stdin:", err)
 		}
 		if relative == true {
 			fmt.Printf("%2.3f %s\n", time.Since(startTime).Seconds(), text)
