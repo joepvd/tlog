@@ -2,7 +2,9 @@ sudo: false
 dist: trusty
 language: go
 go:
-- 1.7.x
+- 1.7
+- 1.10
+- master
 install:
 - go get github.com/jehiah/go-strftime
 - go get github.com/ogier/pflag
