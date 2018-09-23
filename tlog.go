@@ -16,7 +16,7 @@ func main() {
 	pflag.BoolVarP(&relative, "relative", "r", false, "Measure relative time")
 	pflag.BoolVarP(&incremental, "incremental", "i", false, "Measure incremental time")
 	pflag.Parse()
-	if relative == true && incremental == true {
+	if relative && incremental {
 		fmt.Println("The options `relative` (`r`) and `incremental` (`i`) conflict.")
 		fmt.Println("Exiting.")
 		os.Exit(1)
@@ -27,9 +27,9 @@ func main() {
 	var prevTime time.Time
 	var format string
 
-	if relative == true {
+	if relative {
 		startTime = time.Now()
-	} else if incremental == true {
+	} else if incremental {
 		prevTime = time.Now()
 	} else {
 		format = "%Y-%m-%dT%H:%M:%S%L"
@@ -40,11 +40,11 @@ func main() {
 	for scanner.Scan() {
 		text := scanner.Text()
 		if err := scanner.Err(); err != nil {
-			fmt.Println(os.Stderr, "reading stdin:", err)
+			fmt.Fprintln(os.Stderr, "reading stdin:", err)
 		}
-		if relative == true {
+		if relative {
 			fmt.Printf("%2.3f %s\n", time.Since(startTime).Seconds(), text)
-		} else if incremental == true {
+		} else if incremental {
 			fmt.Printf("%2.3f %s\n", time.Since(prevTime).Seconds(), text)
 		} else {
 			now := time.Now()

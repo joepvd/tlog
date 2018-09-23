@@ -2,12 +2,16 @@ sudo: false
 dist: trusty
 language: go
 go:
-- 1.7.x
+  - "1.10"
+  - master
 install:
-- go get github.com/jehiah/go-strftime
-- go get github.com/ogier/pflag
-- go build tlog.go
-script: "{ echo first line; sleep .5; echo second line; } | ./tlog"
+  - go get -t .
+  - go build
+  - go get github.com/golangci/golangci-lint/cmd/golangci-lint
+script:
+  - golangci-lint run
+  - go test -v .
+  - "{ echo first line; sleep .5; echo second line; } | ./tlog"
 deploy:
     provider: releases
     api_key:
