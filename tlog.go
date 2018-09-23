@@ -46,6 +46,7 @@ func main() {
 			fmt.Printf("%2.3f %s\n", time.Since(startTime).Seconds(), text)
 		} else if incremental {
 			fmt.Printf("%2.3f %s\n", time.Since(prevTime).Seconds(), text)
+			prevTime = time.Now()
 		} else {
 			now := time.Now()
 			fmt.Printf("%s %s\n", strftime.Format(format, now), text)
